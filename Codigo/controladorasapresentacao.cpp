@@ -306,64 +306,57 @@ void CntrApresentacaoPessoal::editar(Matricula matricula){
 
     char texto1[] ="\t\tEditar Dados Pessoais";
     char texto2[] ="Nome         :";
-    char texto13[] ="Sobrenome    :"; //manual
+    char texto13[] ="Sobrenome    :";
     char texto3[] ="Email        :";
     char texto4[] ="Telefone     :";
-    char texto5[] ="Matricula    :";
     char texto6[] ="Senha        :";
     char texto10[]="Dados em formato incorreto. Digite algo.";
     char texto11[]="Sucesso no cadastramento. Digite algo.";
     char texto12[]="Falha no cadastramento. Digite algo.";
-    char texto15[] ="Cargo        :"; //manual
+    char texto15[] ="Cargo        :";
 
 
-    char campo1[80], campo2[80], campo3[80], campo4[80], campo5[80];                            // Cria campos para entrada dos dados.
-    char campo6[80], campo7[80], campo8[80], campo9[80], campo10[80];                                                    // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80], campo4[80], campo5[80];
+    char campo6[80], campo7[80], campo8[80], campo9[80], campo10[80];
 
     // Instancia os dom�nios.
 
     Nome nome;
-    Nome sobrenome; //manual
+    Nome sobrenome;
     Email email;
     Telefone telefone;
-    Matricula matricula;
     Senha senha;
-    Cargo cargo; //manual
+    Cargo cargo;
 
     // Apresenta tela de cadastramento.
 
     CLR_SCR;                                                                                   // Limpa janela.
 
-    cout << texto1 << endl;                                                                    // Imprime solicita��o ao usu�rio.
-    cout << texto5 << " ";                                                                     // Imprime nome do campo.
-    cin >> campo5;
-    cout << texto2 << " ";                                                                     // Imprime nome do campo.
+    cout << texto1 << endl;
+    cout << texto2 << " ";
     cin.ignore();
-    cin.getline(campo1,sizeof(campo1));                                                        // L� valor do campo composto.
+    cin.getline(campo1,sizeof(campo1));
 
-    cout<<texto13 <<" "; //manual
-    cin >> campo2; //manual
-    cout << texto3 << " ";                                                                     // Imprime nome do campo.
+    cout<<texto13 <<" ";
+    cin >> campo2;
+    cout << texto3 << " ";
     cin >> campo3;                                                                             // L� valor do campo.
-    cout << texto4 << " ";                                                                     // Imprime nome do campo.
+    cout << texto4 << " ";
     cin >> campo4;                                                                             // L� valor do campo.
-    cout << texto6 << " ";                                                                     // Imprime nome do campo.
+    cout << texto6 << " ";
     cin >> campo6;                                                                             // L� valor do campo.
 
-    cout << texto15 << " "; //manual                                                         // Imprime nome do campo.
-    cin >> campo10; //manual
+    cout << texto15 << " ";
+    cin >> campo10;
 
     try{
         nome.setValor(string(campo1));
-        sobrenome.setValor(string(campo2));//manual
+        sobrenome.setValor(string(campo2));
         email.setValor(string(campo3));
         telefone.setValor(string(campo4));
-        matricula.setValor(string(campo5));
         senha.setValor(string(campo6));
         cargo.setValor(string(campo10));
-        //numero.setValor(string(campo7));
-        //agencia.setValor(string(campo8));
-        //banco.setValor(string(campo9));
+    
     }
     catch(invalid_argument &exp){
         cout << texto10 << endl;                                                                // Informa formato incorreto.
@@ -376,12 +369,12 @@ void CntrApresentacaoPessoal::editar(Matricula matricula){
     Participante participante;
 
     participante.setNome(nome);
-    participante.setNome(sobrenome); //manual
+    participante.setNome(sobrenome);
     participante.setEmail(email);
     participante.setTelefone(telefone);
     participante.setMatricula(matricula);
     participante.setSenha(senha);
-    participante.setCargo(cargo); //manual
+    participante.setCargo(cargo);
 
     // //Cadastra usu�rio e conta.
 
@@ -396,6 +389,8 @@ void CntrApresentacaoPessoal::editar(Matricula matricula){
 
     return;
 }
+
+//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPessoal::excluirParticipante(Matricula matricula){
 
@@ -425,7 +420,6 @@ void CntrApresentacaoPessoal::excluirParticipante(Matricula matricula){
                     getch();
                     apresentar = false;
                     cntrApresentacaoControle->executar();
-                    break;
             case 2: apresentar = false;
                     break;
         }
@@ -566,8 +560,11 @@ void CntrApresentacaoPeca::excluirPeca(){
     char texto2[]="Digite o código da Peça:";
     char texto3[]="Sucesso! Peça excluida.";
     char texto4[]="Falha! Não encontramos essa peça.";
+    char texto5[]="Falha! Esse Código está incorreto.";
 
     char campo1[80];
+
+    CLR_SCR;
 
     cout << texto1 << endl;
     cout << texto2 << "  ";
@@ -575,8 +572,19 @@ void CntrApresentacaoPeca::excluirPeca(){
 
     Codigo codigo;
 
+    try{
+        codigo.setValor(string(campo1));
+    }
+    catch(invalid_argument &exp){
+        cout << texto5 << endl;                                                                // Informa formato incorreto.
+        getch();                                                                                // Leitura de caracter digitado.
+        return;
+    }
+
     if(cntrServicoPeca->excluirPeca1(codigo)){
         cout << texto3 << endl;
+        getch();
+        return;
     }
     CLR_SCR;
     cout << texto4 << endl;
@@ -584,6 +592,8 @@ void CntrApresentacaoPeca::excluirPeca(){
     return;
 
 }
+
+//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPeca::editarPeca(){
 
@@ -596,7 +606,7 @@ void CntrApresentacaoPeca::editarPeca(){
     char texto5[] ="Dados em formato incorreto. Digite algo.";
     char texto6[] ="Sucesso no cadastramento. Digite algo.";
     char texto7[] ="Falha no cadastramento. Digite algo.";
-    char texto8[] ="Codigo          :";
+    char texto8[] ="Código          :";
 
 
     char campo1[80], campo2[80], campo3[80], campo4[80];                                                  // Cria campos para entrada dos dados.
@@ -604,16 +614,16 @@ void CntrApresentacaoPeca::editarPeca(){
     // Instancia os dom�nios.
 
     Nome nome;
-    Codigo codigo;
     Tipo tipo;
+    Codigo codigo;
     Classificacao classificacao;
 
     // Apresenta tela de cadastramento.
 
     CLR_SCR;                                                                                   // Limpa janela.
 
-    cout << texto1 << endl; 
-    cout << texto8 <<" ";
+    cout << texto1 << endl;
+    cout << texto8 << " ";
     cin >> campo4;
     cout << texto2 << " ";                                                                     // Imprime nome do campo.
     cin.ignore();
@@ -657,6 +667,8 @@ void CntrApresentacaoPeca::editarPeca(){
 
     return;
 }
+
+//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoPeca::mostrarPeca(){
 
@@ -804,6 +816,8 @@ void CntrApresentacaoSessao::excluirSessao(){
 
     char campo1[80];
 
+    CLR_SCR;
+
     cout << texto1 << endl;
     cout << texto2 << "  ";
     cin >> campo1;
@@ -821,6 +835,8 @@ void CntrApresentacaoSessao::excluirSessao(){
     return;
 
 }
+
+//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSessao::editarSessao(){
 
@@ -859,6 +875,7 @@ void CntrApresentacaoSessao::editarSessao(){
     try{
         data.setValor(string(campo1));
         horario.setValor(string(campo2));
+        codigo.setValor(string(campo3));
     }
     catch(invalid_argument &exp){
         cout << texto5 << endl;                                                                // Informa formato incorreto.
@@ -1043,6 +1060,8 @@ void CntrApresentacaoSala::excluirSala(){
     //return (CntrApresentacaoSala->execultar(codigo));
 
 }
+
+//--------------------------------------------------------------------------------------------
 
 void CntrApresentacaoSala::editarSala(){
 
