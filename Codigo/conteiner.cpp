@@ -89,7 +89,6 @@ bool ContainerPeca::incluirPeca(Peca peca){;
 bool ContainerPeca::excluirPeca(Codigo codigo){
     for(list<Peca>::iterator elemento = container.begin(); elemento != container.end(); elemento++){
         if (elemento->getCodigo().getValor() == codigo.getValor()){
-            // Remove objeto localizado.
             container.erase(elemento);
             return true;
         }

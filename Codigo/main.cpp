@@ -29,13 +29,10 @@ using namespace std;
 
 int main()
 {
-    // Declarar poteiros e instanciar controladoras.
 
-    //_tsetlocale(LC_ALL, _T("pt_portuguese"));
-    SetConsoleOutputCP( 65001 );
-    //SetConsoleCP(65001);
-    //setlocale(LC_ALL, "pt_BR.UTF-8");
+    SetConsoleOutputCP( 65001 ); //Ativa os caracteres especiais no terminal.
 
+    // Instanciar controladoras.
     CntrApresentacaoControle *cntrApresentacaoControle;
     IApresentacaoAutenticacao *cntrApresentacaoAutenticacao;
     IApresentacaoPessoal *cntrApresentacaoPessoal;
@@ -64,7 +61,7 @@ int main()
     cntrServicoSessao = new CntrServicoSessao();
     cntrServicoSala = new CntrServicoSala();
 
-    // Interligar controladoras e stubs.
+    // Interligar controladoras e serviço.
 
     cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao);
     cntrApresentacaoControle->setCntrApresentacaoPessoal(cntrApresentacaoPessoal);
@@ -78,7 +75,7 @@ int main()
     cntrApresentacaoSessao->setCntrServicoSessao(cntrServicoSessao);
     cntrApresentacaoSala->setCntrServicoSala(cntrServicoSala);
 
-    cntrApresentacaoControle->executar();                                           // Solicitar servi�o.
+    cntrApresentacaoControle->executar(); //Solicitar serviço (começar o programa).
 
-    return 0;
+    return 0; //Finaliza.
 }
