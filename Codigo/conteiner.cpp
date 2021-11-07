@@ -145,7 +145,6 @@ bool ContainerSessao::incluirSessao(Sessao sessao){;
             return false;
         }
     }
-    // Inclui objeto.
     container.push_back(sessao);
 
     return true;
