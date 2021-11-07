@@ -81,20 +81,15 @@ class CntrApresentacaoPessoal:public IApresentacaoPessoal{
     public:
         void executar(Matricula);
         void setCntrServicoPessoal(IServicoPessoal*);
-        //void setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros*);
 };
 
 inline void CntrApresentacaoPessoal::setCntrServicoPessoal(IServicoPessoal *cntr){
     cntrServicoPessoal = cntr;
 }
 
-//inline void CntrApresentacaoPessoal::setCntrServicoProdutosFinanceiros(IServicoProdutosFinanceiros *cntr){
-    //cntrServicoProdutosFinanceiros = cntr;
-//}
-
 //--------------------------------------------------------------------------------------------
 
-class CntrApresentacaoPeca:public IApresentacaoPeca{  //Antigo CntrApresentacaoProdutosFinanceiros
+class CntrApresentacaoPeca:public IApresentacaoPeca{
     private:
         IServicoPeca *cntrServicoPeca;
         void mostrarPeca();
@@ -110,6 +105,8 @@ class CntrApresentacaoPeca:public IApresentacaoPeca{  //Antigo CntrApresentacaoP
 inline void CntrApresentacaoPeca::setCntrServicoPeca(IServicoPeca *cntr){
     this->cntrServicoPeca = cntr;
 }
+
+//--------------------------------------------------------------------------------------------
 
 class CntrApresentacaoSessao:public IApresentacaoSessao{
     private:
@@ -128,7 +125,9 @@ inline void CntrApresentacaoSessao::setCntrServicoSessao(IServicoSessao *cntr){
     this->cntrServicoSessao = cntr;
 }
 
-class CntrApresentacaoSala:public IApresentacaoSala{  //Antigo CntrApresentacaoProdutosFinanceiros
+//--------------------------------------------------------------------------------------------
+
+class CntrApresentacaoSala:public IApresentacaoSala{
     private:
         IServicoSala *cntrServicoSala;
         void mostrarSala();

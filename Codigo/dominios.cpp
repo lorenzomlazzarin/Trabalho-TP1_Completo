@@ -27,11 +27,11 @@ void Matricula::validar(string valor){
                  }
              }
          }
-         return; //SUCESSO, 5 dígitos diferentes.
+         return;
 
      }
      else{
-         throw invalid_argument("Argumento invalido"); //INVÝLIDO, a string possui mais ou menos de 5 caracteres
+         throw invalid_argument("Argumento invalido"); 
      }
 }
 
@@ -125,7 +125,7 @@ void Senha::validar(string valor){
     throw invalid_argument("Senha inválida. Informe uma senha válida. Ex: NOME123@");
 }
 
-void Cargo::validar(string valor){ //manual
+void Cargo::validar(string valor){
     string cargos[6] = {"ator", "cenógrafo", "figurinista", "maquiador", "sonoplasta", "iluminador"};
     for(int i = 0; i <= 5; i++){
         if(cargos[i].compare(valor) == 0)
@@ -140,7 +140,7 @@ void Cargo::validar(string valor){ //manual
 
 //Classe nome já foi chamada na linha 39.
 
-void Codigo::validar(string valor){  //Manual
+void Codigo::validar(string valor){
     int flag = 0;
 
     if (valor.size()==6) {
@@ -151,10 +151,52 @@ void Codigo::validar(string valor){  //Manual
         }
         if (flag == valor.size()) return;
     }
+    else if (valor.size()==13 && valor[6]==45){
+        for (int i=0;i<6;i++){
+            if (i<2 && valor[i]>=65 && valor[i]<=90)flag++;
+            else if (i>=2 && valor[i]>=48 && valor[i]<=57)flag++;
+            else break;
+        }
+        if (flag == 6){
+            flag = 0;
+            for (int i=7;i<13;i++){
+                if (i<9 && valor[i]>=65 && valor[i]<=90)flag++;
+                else if (i>=9 && valor[i]>=48 && valor[i]<=57)flag++;
+                else break;
+            }
+            if (flag == 6) return;
+        }
+    }
+    else if (valor.size()==20 && valor[6]==45 && valor[13]==45){
+        for (int i=0;i<6;i++){
+            if (i<2 && valor[i]>=65 && valor[i]<=90)flag++;
+            else if (i>=2 && valor[i]>=48 && valor[i]<=57)flag++;
+            else break;
+        }
+        if (flag == 6){
+            flag = 0;
+            for (int i=7;i<13;i++){
+
+                if (i<9 && valor[i]>=65 && valor[i]<=90)flag++;
+                else if (i>=9 && valor[i]>=48 && valor[i]<=57)flag++;
+                else break;
+            }
+            if (flag == 6){
+                flag = 0;
+                for (int i=14;i<20;i++){
+    
+                    if (i<16 && valor[i]>=65 && valor[i]<=90)flag++;
+                    else if (i>=16 && valor[i]>=48 && valor[i]<=57)flag++;
+                    else break;
+                }
+                if (flag == 6) return;
+            }
+        }
+    }
     throw invalid_argument("Codigo invalido. Ex: AA0000.");
 }
 
-void Classificacao::validar(string valor){ //Manula
+void Classificacao::validar(string valor){
     string classificacoes[6] = {"livre", "10", "12", "14", "16", "18"};
     for(int i=0; i <=5; i++){
         if(classificacoes[i].compare(valor) == 0)
@@ -163,7 +205,7 @@ void Classificacao::validar(string valor){ //Manula
     throw invalid_argument("Classificacao inválida. Informe um cargo válido. Ex: livre, 10");
 }
 
-void Tipo::validar(string valor){ //Manual
+void Tipo::validar(string valor){
     if(valor == "auto" || valor == "comédia" || valor == "comedia" || valor == "drama" ||
     valor == "farsa" || valor == "melodrama" || valor == "monólogo" || valor == "monologo" ||
     valor == "musical" || valor == "ópera" || valor == "opera" || valor == "revista") {
@@ -178,7 +220,7 @@ void Tipo::validar(string valor){ //Manual
 
 //Classe Código já foi implementada na linha 143.
 
-void Data::validar(string valor){ // Lorenzo - 200022610
+void Data::validar(string valor){
     char dia_char[3], mes_char[3], ano_char[5];
     int dia, mes, ano, flag_laco = 0;
 
@@ -258,17 +300,17 @@ void Data::validar(string valor){ // Lorenzo - 200022610
             }
         }
     }
+    cout << "Data"<<endl;
     throw invalid_argument("Data invalida. Cuidado com o ano bissesto. Ex: DD/MM/AAAA");
     }
 }
 
-void Horario::validar(string valor){ // Eder - 170140636
+void Horario::validar(string valor){
 
     char hora_string[2], minuto_string[2];
     int hora_int, minuto_int;
 
     if(valor[1]>=48 && valor[1]<=57 && valor[4]>48 && valor[4]<=57){
-
         hora_string[0] = valor[0];
         hora_string[1] = valor[1];
         hora_string[2] = '\0';
@@ -278,15 +320,17 @@ void Horario::validar(string valor){ // Eder - 170140636
         minuto_string[1] = valor[4];
         minuto_string[2] = '\0';
         minuto_int = atoi(minuto_string);
+        
         if(hora_int >= 0 && hora_int <= 23)
         {
             if(minuto_int == 00 || minuto_int == 15 || minuto_int == 30 || minuto_int == 45) return;
         }
     }
+    cout << "horario" << endl;
     throw invalid_argument("Argumento invalido.");
 }
 
-void Capacidade::validar(string capacidade) { // octavio - 190094087
+void Capacidade::validar(string capacidade) {
    if(capacidade == "100" || capacidade == "200" || capacidade == "300" || capacidade == "400" || capacidade == "500")
         return;
     throw invalid_argument("Capacidade inválida. Informe um valor válido. Ex: 100");

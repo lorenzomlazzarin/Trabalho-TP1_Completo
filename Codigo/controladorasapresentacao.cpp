@@ -356,7 +356,7 @@ void CntrApresentacaoPessoal::editar(Matricula matricula){
         telefone.setValor(string(campo4));
         senha.setValor(string(campo6));
         cargo.setValor(string(campo10));
-    
+
     }
     catch(invalid_argument &exp){
         cout << texto10 << endl;                                                                // Informa formato incorreto.
@@ -744,15 +744,15 @@ void CntrApresentacaoSessao::incluirSessao(){
     // Mensagens a serem apresentadas na tela de cadastramento.
 
     char texto1[] ="\t\t\tCadastrar Sessão";
-    char texto2[] ="Data              :";
-    char texto3[] ="Horario           :";
+    char texto2[] ="Data               :";
+    char texto3[] ="Horario            :";
     char texto5[]="Dados em formato incorreto. Digite algo.";
     char texto6[]="Sucesso no cadastramento. Digite algo.";
     char texto7[]="Falha no cadastramento. Digite algo.";
-    char texto8[] ="Codigo da peça    :";
+    char texto8[] ="Codigo da sessão (peça-sessao) :";
 
 
-    char campo1[80], campo2[80], campo3[80];                                                 // Cria campos para entrada dos dados.
+    char campo1[80], campo2[80], campo3[80];
 
     // Instancia os dom�nios.
 
@@ -772,14 +772,14 @@ void CntrApresentacaoSessao::incluirSessao(){
     cout << texto8 << " ";
     cin >> campo3;
 
-
     try{
         data.setValor(string(campo1));
         horario.setValor(string(campo2));
+        codigo.setValor(string(campo3));
     }
     catch(invalid_argument &exp){
-        cout << texto5 << endl;                                                                // Informa formato incorreto.
-        getch();                                                                                // Leitura de caracter digitado.
+        cout << texto5 << endl;
+        getch();
         return;
     }
 
@@ -792,14 +792,13 @@ void CntrApresentacaoSessao::incluirSessao(){
     sessao.setCodigo(codigo);
 
     // //Cadastra usu�rio e conta.
-
     if(cntrServicoSessao->incluirSessao1(sessao)){
-            cout << texto6 << endl;                                                                    // Informa sucesso.
+            cout << texto6 << endl;
             getch();
             return;
         }
 
-    cout << texto7 << endl;                                                                            // Informa falha.
+    cout << texto7 << endl;
     getch();
 
     return;
@@ -810,7 +809,7 @@ void CntrApresentacaoSessao::incluirSessao(){
 void CntrApresentacaoSessao::excluirSessao(){
 
     char texto1[]="Qual sessão você deseja excluir?";
-    char texto2[]="Digite o código da sessão:";
+    char texto2[]="Digite o código da sessão (peça-sessao):";
     char texto3[]="Sucesso! sessão excluida.";
     char texto4[]="Falha! Não encontramos essa sessão.";
 
@@ -824,16 +823,18 @@ void CntrApresentacaoSessao::excluirSessao(){
 
     Codigo codigo;
 
+    codigo.setValor(campo1);
+
     if(cntrServicoSessao->excluirSessao1(codigo)){
         cout << texto3 << endl;
+        getch();
+        return;
     }
     CLR_SCR;
     cout << texto4 << endl;
     getch();
 
-    //voltar para o menu.
     return;
-
 }
 
 //--------------------------------------------------------------------------------------------
@@ -848,7 +849,7 @@ void CntrApresentacaoSessao::editarSessao(){
     char texto5[]="Dados em formato incorreto. Digite algo.";
     char texto6[]="Sucesso no cadastramento. Digite algo.";
     char texto7[]="Falha no cadastramento. Digite algo.";
-    char texto8[] ="Codigo da peça    :";
+    char texto8[] ="Codigo da sessão (peça-sessao) :";
 
 
     char campo1[80], campo2[80], campo3[80];                                                 // Cria campos para entrada dos dados.
@@ -975,7 +976,7 @@ void CntrApresentacaoSala::incluirSala(){
     char texto5[] ="Dados em formato incorreto. Digite algo.";
     char texto6[] ="Sucesso no cadastramento. Digite algo.";
     char texto7[] ="Falha no cadastramento. Digite algo.";
-    char texto8[] ="Codigo da peca  :";
+    char texto8[] ="Codigo da sala (peça-sessao-sala) :";
 
 
     char campo1[80], campo2[80], campo3[80];                                                 // Cria campos para entrada dos dados.
@@ -1036,7 +1037,7 @@ void CntrApresentacaoSala::incluirSala(){
 void CntrApresentacaoSala::excluirSala(){
 
     char texto1[]="Qual sala você deseja excluir?";
-    char texto2[]="Digite o código da sala:";
+    char texto2[]="Digite o código da sala (peça-sala-sessão):";
     char texto3[]="Sucesso! sala excluida.";
     char texto4[]="Falha! Não encontramos essa sala.";
 
@@ -1050,14 +1051,16 @@ void CntrApresentacaoSala::excluirSala(){
 
     Codigo codigo;
 
+    codigo.setValor(string(campo1));
+
     if(cntrServicoSala->excluirSala1(codigo)){
         cout << texto3 << endl;
+        getch();
+        return;
     }
     CLR_SCR;
     cout << texto4 << endl;
     getch();
-
-    //return (CntrApresentacaoSala->execultar(codigo));
 
 }
 
@@ -1073,7 +1076,7 @@ void CntrApresentacaoSala::editarSala(){
     char texto5[] ="Dados em formato incorreto. Digite algo.";
     char texto6[] ="Sucesso no cadastramento. Digite algo.";
     char texto7[] ="Falha no cadastramento. Digite algo.";
-    char texto8[] ="Codigo da peca  :";
+    char texto8[] ="Codigo da sala (peça-sala-sessão):";
 
 
     char campo1[80], campo2[80], campo3[80];                                                 // Cria campos para entrada dos dados.

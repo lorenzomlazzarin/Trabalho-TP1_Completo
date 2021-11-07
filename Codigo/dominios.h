@@ -2,7 +2,7 @@
 #define DOMINIOS_H_INCLUDED
 
 #include<stdexcept>
-
+#include <iostream>
 using namespace std;
 
 //--------------------------------------------------------------------------------------------
