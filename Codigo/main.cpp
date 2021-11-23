@@ -27,6 +27,9 @@ ator
 
 using namespace std;
 
+int a = 0;
+extern int a;
+
 int main()
 {
 

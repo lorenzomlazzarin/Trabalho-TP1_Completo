@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1637589034 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\conteiner.cpp
+	"conteiner.h"
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\conteiner.h
+	"entidades.h"
+	"dominios.h"
+	<list>
+	<iostream>
+	<stdio.h>
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\entidades.h
+	"dominios.h"
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\dominios.h
+	<stdexcept>
+	<iostream>
+
+1637599305 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\controladorasapresentacao.cpp
+	"controladorasapresentacao.h"
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\controladorasapresentacao.h
+	<conio.h>
+	<iostream>
+	<string.h>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\interfaces.h
+	"dominios.h"
+	"entidades.h"
+
+1637589034 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\controladorasservico.cpp
+	"controladorasservico.h"
+	<iostream>
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\controladorasservico.h
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+	"conteiner.h"
+
+1637589034 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\dominios.cpp
+	"dominios.h"
+	<iostream>
+	<stdio.h>
+	<string>
+	<string.h>
+	<ctype.h>
+	<stdlib.h>
+
+1637599904 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\main.cpp
+	<string.h>
+	<stdexcept>
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<windows.h>
+	<tchar.h>
+	"dominios.h"
+	"entidades.h"
+	"interfaces.h"
+	"controladorasapresentacao.h"
+	"controladorasservico.h"
+
+1637589034 source:c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\stubs.cpp
+	"stubs.h"
+
+1637589034 c:\users\basis tecnologia\documents\meu projeto\trabalho-tp1_completo\codigo\stubs.h
+	<string>
+	"dominios.h"
+	"interfaces.h"
+
