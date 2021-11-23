@@ -66,6 +66,7 @@ void CntrApresentacaoControle::executar(){
 
                             switch(campo){
                                 case 1: cntrApresentacaoPessoal->executar(matricula);                 //semi-manual - Solicita servi�o de participante.
+                                        apresentar = false;
                                         break;
                                 case 2: cntrApresentacaoPeca->executar(identificador);     // Solicita servi�o de produto financeiro.
                                         break;
@@ -192,7 +193,7 @@ void CntrApresentacaoPessoal::executar(Matricula matricula){
             case 1: editar(matricula);
                     break;
             case 2: excluirParticipante(matricula);
-                    break;
+                    return;
             case 3: apresentar = false;
                     break;
         }
@@ -419,12 +420,11 @@ void CntrApresentacaoPessoal::excluirParticipante(Matricula matricula){
                     cout << texto4;
                     getch();
                     apresentar = false;
-                    cntrApresentacaoControle->executar();
+                    return;
             case 2: apresentar = false;
-                    break;
+                    return;
         }
     }
-
 }
 
 //############################################################################################################################
@@ -604,8 +604,8 @@ void CntrApresentacaoPeca::editarPeca(){
     char texto3[] ="Tipo            :";
     char texto4[] ="Classificação   :";
     char texto5[] ="Dados em formato incorreto. Digite algo.";
-    char texto6[] ="Sucesso no cadastramento. Digite algo.";
-    char texto7[] ="Falha no cadastramento. Digite algo.";
+    char texto6[] ="Sucesso na Edição. Digite algo.";
+    char texto7[] ="Falha na Edição. Digite algo.";
     char texto8[] ="Código          :";
 
 
