@@ -31,7 +31,7 @@ void Matricula::validar(string valor){
 
      }
      else{
-         throw invalid_argument("Argumento invalido"); 
+         throw invalid_argument("Argumento invalido");
      }
 }
 
@@ -152,46 +152,22 @@ void Codigo::validar(string valor){
         if (flag == valor.size()) return;
     }
     else if (valor.size()==13 && valor[6]==45){
-        for (int i=0;i<6;i++){
-            if (i<2 && valor[i]>=65 && valor[i]<=90)flag++;
+        for (int i=0;i<14;i++){
+            if (i<2 && valor[i]>=65 && valor[i]<=90 || i>=7 && i<=8 && valor[i]>=65 && valor[i]<=90)flag++;
             else if (i>=2 && valor[i]>=48 && valor[i]<=57)flag++;
+            else if (i==6) continue;
             else break;
         }
-        if (flag == 6){
-            flag = 0;
-            for (int i=7;i<13;i++){
-                if (i<9 && valor[i]>=65 && valor[i]<=90)flag++;
-                else if (i>=9 && valor[i]>=48 && valor[i]<=57)flag++;
-                else break;
-            }
-            if (flag == 6) return;
-        }
+        if (flag == 12) return;
     }
     else if (valor.size()==20 && valor[6]==45 && valor[13]==45){
         for (int i=0;i<6;i++){
-            if (i<2 && valor[i]>=65 && valor[i]<=90)flag++;
+            if (i<2 && valor[i]>=65 && valor[i]<=90 || i>=7 && i<=8 && valor[i]>=65 && valor[i]<=90 || i>=14 && i<=15 && valor[i]>=65 && valor[i]<=90)flag++;
             else if (i>=2 && valor[i]>=48 && valor[i]<=57)flag++;
+            else if (i==6 || i==13) continue;
             else break;
         }
-        if (flag == 6){
-            flag = 0;
-            for (int i=7;i<13;i++){
-
-                if (i<9 && valor[i]>=65 && valor[i]<=90)flag++;
-                else if (i>=9 && valor[i]>=48 && valor[i]<=57)flag++;
-                else break;
-            }
-            if (flag == 6){
-                flag = 0;
-                for (int i=14;i<20;i++){
-    
-                    if (i<16 && valor[i]>=65 && valor[i]<=90)flag++;
-                    else if (i>=16 && valor[i]>=48 && valor[i]<=57)flag++;
-                    else break;
-                }
-                if (flag == 6) return;
-            }
-        }
+        if (flag == 18) return;
     }
     throw invalid_argument("Codigo invalido. Ex: AA0000.");
 }
@@ -320,7 +296,7 @@ void Horario::validar(string valor){
         minuto_string[1] = valor[4];
         minuto_string[2] = '\0';
         minuto_int = atoi(minuto_string);
-        
+
         if(hora_int >= 0 && hora_int <= 23)
         {
             if(minuto_int == 00 || minuto_int == 15 || minuto_int == 30 || minuto_int == 45) return;
